@@ -1,0 +1,87 @@
+<mat-toolbar
+  style="height: 69px; border-radius: 0px 0px 30px 30px"
+  class="mtbar"
+  color="primary"
+>
+  <span class="example-spacer"></span>
+  <!-- <app-flag></app-flag> -->
+</mat-toolbar>
+
+<mat-sidenav-container style="overflow: auto">
+  <br />
+  <div fxLayout="row" fxLayoutAlign="center center" class="h-200">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit(form.value)"
+      fxFlex="80"
+      fxFlex.gt-sm="40"
+      fxFlex.sm="60"
+    >
+      <mat-card class="p-8 mat-elevation-z24 box">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          class="bg-primary box-header"
+        >
+          <img src="./assets/img/icons/hospital.png" alt="img" />
+
+          <h2 class="title">{{ "Sitetitle" | translate }}</h2>
+        </div>
+        <mat-card-content
+          fxLayout="column"
+          fxLayoutAlign="end center"
+          class="box-content"
+        >
+          <mat-card
+            class="mat-card-log"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            class="mat-elevation-z12 box-content-inner"
+          >
+            <mat-form-field class="w-100" appearance="outline">
+              <input
+                matInput
+                placeholder="Username"
+                formControlName="username"
+              />
+              <mat-icon matSuffix>account_circle</mat-icon>
+              <mat-error *ngIf="form.controls.username.errors?.required"
+                >Username is required</mat-error
+              >
+              <mat-error *ngIf="form.controls.username.hasError('invalidEmail')"
+                >Invalid address</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="w-100" appearance="outline">
+              <input
+                [type]="toggle ? 'password' : 'text'"
+                matInput
+                formControlName="password"
+                placeholder="Password"
+              />
+              <mat-icon class="mat-icon" matSuffix (click)="toggle = !toggle">
+                {{ toggle ? "visibility_off" : "visibility_on" }}</mat-icon
+              >
+              <mat-error *ngIf="form.controls.password.errors?.required"
+                >Password is required</mat-error
+              >
+              <mat-error *ngIf="form.controls.password.hasError('minlength')"
+                >Password isn't long enough, minimum of 6 characters</mat-error
+              >
+            </mat-form-field>
+          </mat-card>
+          <br />
+          <button
+            [disabled]="!form.valid"
+            mat-raised-button
+            color="primary"
+            class="mat-elevation-z12 box-button bg-primary"
+            type="submit"
+          >
+            {{ "Login" | translate }}
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</mat-sidenav-container>
