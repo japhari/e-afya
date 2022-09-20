@@ -15,8 +15,10 @@
     ],
     "lib": [
       "es2018",
+      "es2020",
       "dom",
       "esnext.asynciterable"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
   }
 }

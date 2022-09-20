@@ -177,7 +177,6 @@ export const PrimengModules: any[] = [
   CarouselModule,
   GalleriaModule,
   DragDropModule,
-  // miscellaneous components
   AvatarModule,
   AvatarGroupModule,
   BadgeModule,

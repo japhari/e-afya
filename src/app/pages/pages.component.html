@@ -1,0 +1,154 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    *ngIf="settings.menu == 'vertical'"
+    [opened]="settings.sidenavIsOpened"
+    [mode]="settings.sidenavIsPinned ? 'side' : 'over'"
+    #sidenav
+    class="sidenav mat-elevation-z6"
+  >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content
+    id="main"
+    perfectScrollbar
+    (psScrollY)="onPsScrollY($event)"
+  >
+    <mat-toolbar color="primary" class="flex-p-x">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button
+            *ngIf="settings.menu == 'vertical'"
+            mat-icon-button
+            (click)="toggleSidenav()"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button
+            fxShow="false"
+            fxShow.gt-xs
+            *ngIf="settings.menu == 'vertical'"
+            mat-icon-button
+            (click)="settings.sidenavUserBlock = !settings.sidenavUserBlock"
+          >
+            <mat-icon>person</mat-icon>
+          </button>
+          <a
+            *ngIf="settings.menu == 'horizontal'"
+            mat-raised-button
+            color="accent"
+            routerLink="/"
+            (click)="closeSubMenus()"
+            class="small-logo"
+            >A</a
+          >
+          <a
+            *ngIf="settings.menu == 'horizontal'"
+            class="logo"
+            routerLink="/"
+            (click)="closeSubMenus()"
+            >Afya</a
+          >
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <!-- <app-flags-menu fxShow="false" fxShow.gt-sm></app-flags-menu> -->
+          <!-- <app-fullscreen></app-fullscreen> -->
+          <!-- <app-applications fxShow="false" fxShow.gt-sm></app-applications>
+          <app-messages fxShow="false" fxShow.gt-xs></app-messages> -->
+          <!-- <app-user-menu></app-user-menu> -->
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <mat-toolbar
+      id="horizontal-menu"
+      color="primary"
+      *ngIf="settings.menu == 'horizontal'"
+      class="horizontal-menu flex-p-x transition-2"
+      [class.fixed-top]="!settings.fixedHeader"
+    >
+      <div fxLayout="row" fxLayoutAlign="center center" class="w-100">
+        <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
+      </div>
+    </mat-toolbar>
+
+    <div
+      id="main-content"
+      class="inner-sidenav-content transition-2"
+      perfectScrollbar
+      (psScrollY)="onPsScrollY($event)"
+    >
+      <!-- <app-breadcrumb></app-breadcrumb> -->
+      <div [class.has-footer]="settings.hasFooter">
+        <router-outlet></router-outlet>
+      </div>
+      <div
+        *ngIf="settings.hasFooter"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        class="footer bg-red"
+      >
+        <small style="padding-left: 50%; font-size: 17px; font-weight: 500">
+          <span style="color: white">
+            {{ "Copyright" | translate }}</span
+          ></small
+        >
+      </div>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="options-icon"
+      (click)="options.toggle()"
+    >
+      <button
+        style="outline: none; border: none"
+        style="background-color: #468dca"
+        mat-fab
+        color="primary"
+      >
+        <mat-icon>opacity</mat-icon>
+      </button>
+    </div>
+
+    <div
+      #backToTop
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="back-to-top"
+      (click)="scrollToTop()"
+    >
+      <mat-icon>arrow_upward</mat-icon>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav #options position="end" class="options">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="control mat-elevation-z1"
+    >
+      <h2>Settings</h2>
+    </div>
+    <div perfectScrollbar>
+      <div fxLayout="column" class="control">
+        <h4>Choose theme</h4>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <div
+            class="skin-primary indigo-light"
+            (click)="changeTheme('indigo-light')"
+          >
+            <div class="skin-secondary"></div>
+          </div>
+
+          <div
+            class="skin-primary blue-dark"
+            (click)="changeTheme('blue-dark')"
+          >
+            <div class="skin-secondary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

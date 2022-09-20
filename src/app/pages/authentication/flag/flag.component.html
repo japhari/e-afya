@@ -1,0 +1,55 @@
+<button
+  mat-fab
+  [matMenuTriggerFor]="flagsMenu"
+  #flagsMenuTrigger="matMenuTrigger"
+  color="warn"
+  aria-label="Example icon button with a bookmark icon"
+>
+  <mat-icon>flag</mat-icon>
+</button>
+<!--<button mat-icon-button [matMenuTriggerFor]="flagsMenu" #flagsMenuTrigger="matMenuTrigger">
+    <img src="assets/img/flags/gb.svg" width="20" alt="english"> 
+</button>-->
+<mat-menu
+  #flagsMenu="matMenu"
+  [overlapTrigger]="false"
+  class="toolbar-dropdown-menu flags"
+>
+  <span (mouseleave)="flagsMenuTrigger.closeMenu()">
+    <button (click)="switchLang('sw')" mat-menu-item>
+      <img src="assets/img/flags/tz.svg" width="20" alt="german" />
+      Swahili
+    </button>
+    <button (click)="switchLang('en')" mat-menu-item>
+      <img src="assets/img/flags/gb.svg" width="20" alt="english" />
+      English
+    </button>
+    <button (click)="switchLang('fr')" mat-menu-item>
+      <img src="assets/img/flags/fr.svg" width="20" alt="french" />
+      Français
+    </button>
+    <button (click)="switchLang('po')" mat-menu-item>
+      <img src="assets/img/flags/po.svg" width="20" alt="french" />
+      Português
+    </button>
+    <!-- <button (click)="switchLang('ch')" mat-menu-item>
+      <img src="assets/img/flags/china.svg" width="20" alt="french" />
+      China
+    </button> -->
+
+    <!-- <button (click)="switchLang('ge')" mat-menu-item>
+      <img src="assets/img/flags/de.svg" width="20" alt="german" />
+      Germany
+    </button> -->
+
+    <!-- <button (click)="switchLang('ru')" mat-menu-item>
+      <img src="assets/img/flags/ru.svg" width="20" alt="russian" />
+      Russian
+    </button>
+    <button (click)="switchLang('tr')" mat-menu-item>
+      <img src="assets/img/flags/tr.svg" width="20" alt="turkish" />
+      Turkish
+    </button> -->
+  </span>
+</mat-menu>
+<br />

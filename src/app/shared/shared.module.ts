@@ -5,6 +5,7 @@ import { MaterialModule } from './material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PrimengModule } from './primeng.module';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    PrimengModule,
     TranslateModule,
     NgbModule,
     FlexLayoutModule,

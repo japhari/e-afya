@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/layout/not-found/not-found.component';
 import { PrivateComponent } from './pages/layout/private/private.component';
 import { PublicComponent } from './pages/layout/public/public.component';
+import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
   //Protected Routes
   {
     path: 'main',
-    component: PrivateComponent,
+    component: PagesComponent,
     data: { breadcrumb: 'Home' },
     children: [
       {
